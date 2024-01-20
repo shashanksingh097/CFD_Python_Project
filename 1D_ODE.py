@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Variable initialization.
-N = 10  # number of Nodes
+N = 5 # number of Nodes
 domain_length = 10
 T1 = 0
 
@@ -27,9 +27,9 @@ B[0] = T1
 B[1:N - 1] = 2 * dx * X[1:N - 1]
 
 # This can be changed for the last point
-is_backward = 0
+is_backward_second = 1
 
-if is_backward:
+if is_backward_second:
 
     # second order backward, N should be at least 4
     coefficient_matrix[N - 1, N - 3:] = [1, -4, 3]
