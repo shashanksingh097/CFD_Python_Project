@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Variable initialization.
-N = 25  # number of Nodes
+N = 10  # number of Nodes
 domain_length = 10
 T1 = 0
 
@@ -27,10 +27,16 @@ B[0] = T1
 B[1:N - 1] = 2 * dx * X[1:N - 1]
 
 # This can be changed for the last point
+is_backward = 0
 
-# second order backward, N should be at least 4
-coefficient_matrix[N - 1, N - 3:] = [1, -4, 3]
-B[N - 1] = 2 * dx * X[N - 1]
+if is_backward:
+
+    # second order backward, N should be at least 4
+    coefficient_matrix[N - 1, N - 3:] = [1, -4, 3]
+    B[N - 1] = 2 * dx * X[N - 1]
+else:
+    coefficient_matrix[N - 1, -2:] = [-1,1]
+    B[N - 1] =  dx * X[N - 1]
 
 T = np.linalg.solve(coefficient_matrix, B)
 
